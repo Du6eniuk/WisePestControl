@@ -1,0 +1,20 @@
+# Netlify configuration — static site, nothing to build.
+# The whole repo root is published as-is.
+[build]
+  publish = "."
+
+# Sensible security headers for a brochure site.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Images are stable, so let browsers keep them for a month. CSS and JS keep
+# Netlify's default (revalidate on every load) so edits go live immediately.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

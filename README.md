@@ -2,6 +2,8 @@
 
 Marketing website for a Florida pest control company, built as a portfolio piece: logo, brand palette and a one-page site. Plain HTML, CSS and JavaScript, no build step and no dependencies.
 
+Live at **[wisepestcontrol.site](https://wisepestcontrol.site)**, hosted on Netlify.
+
 ![Wise Pest Control](images/og-image.jpg)
 
 ## The brand
@@ -42,10 +44,11 @@ css/styles.css      tokens → base → layout → components → sections
 js/main.js          mobile menu, scroll reveal, active nav link, hero scene, quote form
 images/             logo, favicons, social share image
 brand/              logo concept sheet from the exploration round
+netlify.toml        Netlify config: publish the root as-is, security headers
 ```
 
 The nav links jump to sections on the one page; there are no separate subpages.
 
 ## About the content
 
-The business name is real; everything else is placeholder copy for the demo. The phone number, email, reviews, ratings, prices, home counts and claims such as "licensed & insured" are invented and should be replaced before this is used as a live business site. The copy says "pet-friendly options" rather than "safe", because pest control advertising shouldn't claim that treatments are safe. The quote form validates and shows a confirmation, but sends nothing: there's a marked spot in `js/main.js` for connecting a form service.
+The business name and phone number are real; everything else is placeholder copy for the demo. The email, reviews, ratings, prices, home counts and claims such as "licensed & insured" are invented and should be replaced before this is used as a live business site. The copy says "pet-friendly options" rather than "safe", because pest control advertising shouldn't claim that treatments are safe. The quote form validates and shows a confirmation, but sends nothing: there's a marked spot in `js/main.js` for connecting a form service.
