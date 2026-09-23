@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WisePestControl — Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800;900&family=Oswald:wght@500;600&family=Red+Hat+Display:wght@700;800;900&family=Shrikhand&display=swap">
+<style>
+  :root {
+    --page: #f2f1ed;
+    --card: #ffffff;
+    --ink: #15181e;
+    --muted: #5f6672;
+    --line: #e3e1db;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 15px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px 72px; }
+
+  /* Sheet header */
+  .sheet-head { padding: 52px 4px 4px; }
+  .kicker { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-size: clamp(28px, 4.2vw, 42px); line-height: 1.12; letter-spacing: -.025em; margin: 10px 0 14px; }
+  .lede { max-width: 760px; margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Concept card */
+  .concept { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(18px, 3vw, 32px); margin-top: 28px; }
+  .concept-head { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; row-gap: 4px; align-items: baseline; margin-bottom: 22px; }
+  .num { font-weight: 700; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .concept-head h2 { margin: 0; font-size: 24px; letter-spacing: -.015em; }
+  .tags { grid-column: 2; font-size: 13px; color: var(--muted); font-weight: 500; }
+  .concept-head p { grid-column: 2; margin: 8px 0 0; max-width: 800px; color: #3d434d; text-wrap: pretty; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+  .tile { position: relative; margin: 0; border-radius: 16px; border: 1px solid var(--line); padding: 44px 28px 30px; display: flex; align-items: center; justify-content: center; min-height: 240px; background: #fff; }
+  .tile .cap { position: absolute; top: 13px; left: 16px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .tile.dark { border-color: transparent; }
+  .tile.dark .cap { color: rgba(255,255,255,.62); }
+  .t-main { grid-column: span 7; }
+  .t-dark { grid-column: span 5; }
+  .t-icons { grid-column: span 5; gap: 26px; flex-wrap: wrap; }
+  .t-palette { grid-column: span 7; flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 16px; }
+  .t-site { grid-column: 1 / -1; padding: 44px 18px 18px; background: #f7f7f5; }
+
+  .lockup { display: block; width: 100%; height: auto; overflow: visible; }
+  .t-main .lockup { max-width: 520px; max-height: 168px; }
+  .t-dark .lockup { max-width: 390px; max-height: 126px; }
+
+  /* Icon row */
+  .appicon { width: 104px; height: 104px; border-radius: 24px; display: grid; place-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 20px rgba(0,0,0,.10); }
+  .appicon svg { width: 76%; height: 76%; overflow: visible; }
+  .avatar { width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); }
+  .avatar svg { width: 70%; height: 70%; }
+  .favs { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .tab { display: flex; align-items: center; gap: 8px; background: #efeeea; border-radius: 8px 8px 0 0; padding: 7px 12px; font-size: 12px; color: #4a505a; }
+  .tab svg { width: 16px; height: 16px; flex: none; }
+  .favsizes { display: flex; align-items: flex-end; gap: 12px; }
+  .favsizes small { display: block; font-size: 10px; color: var(--muted); text-align: center; margin-top: 3px; }
+
+  /* Palette */
+  .swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  .sw { border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,.06); }
+  .sw i { display: block; height: 78px; background: var(--c); }
+  .sw div { padding: 8px 10px 10px; }
+  .sw b { display: block; font-size: 12px; font-weight: 600; }
+  .sw code { font: 500 11px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); }
+  .sw em { display: block; font-style: normal; font-size: 11px; color: var(--muted); }
+  .type { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #3d434d; }
+  .type b { font-weight: 600; color: var(--ink); }
+
+  /* Mini website preview */
+  .mock { width: 100%; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #e3e1db; box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 14px 34px rgba(0,0,0,.08); }
+  .mock-chrome { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #ebeae6; border-bottom: 1px solid #dfddd7; }
+  .mock-chrome i { width: 9px; height: 9px; border-radius: 50%; background: #d1cfc9; }
+  .mock-chrome span { margin-left: 10px; font-size: 11px; color: #8a8f98; background: #fff; border-radius: 6px; padding: 2px 12px; }
+  .mock-nav { position: relative; display: flex; align-items: center; gap: 22px; padding: 14px 28px; background: #fff; border-bottom: 1px solid #eee; }
+  .mock-logo { height: 46px; width: auto; flex: none; overflow: visible; }
+  .mock-links { display: flex; gap: 22px; margin-left: auto; font-size: 13px; font-weight: 500; color: #3b4250; }
+  .mock-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .mock-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; padding: 46px 0 0 28px; align-items: end; }
+  .mock-hero > * { position: relative; }
+  .mock-copy { padding-bottom: 48px; align-self: center; }
+  .mock-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .mock-hero h3 { margin: 12px 0 14px; font-size: 46px; line-height: 1.02; }
+  .mock-hero p { margin: 0 0 22px; font-size: 14px; max-width: 430px; }
+  .mock-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .mock-trust { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 18px; font-size: 12px; font-weight: 600; }
+  .mock-trust span::before { content: "✓ "; }
+  .mock-art { display: block; width: 100%; height: auto; -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%); mask-image: linear-gradient(90deg, transparent, #000 18%); }
+
+  /* Concept 1 site theme: after dark. Midnight hero, amber light, the owl-house keeps watch. */
+  .mock-c1 .mock-nav { background: #14213D; border-bottom-color: #22375A;
+    --c1-roof: #F5EFE2; --c1-body: #22375A; --c1-pupil: #0E1830; --c1-word: #F5EFE2; --c1-sub: #F7A928; }
+  .mock-c1 .mock-links { color: rgba(245,239,226,.78); }
+  .mock-c1 .mock-btn { background: #F7A928; color: #14213D; }
+  .mock-c1 .mock-hero { background: radial-gradient(55% 80% at 78% 18%, rgba(34,55,90,.95), transparent 70%), linear-gradient(180deg, #14213D 0%, #0E1830 100%); color: #F5EFE2; }
+  .mock-c1 .mock-eyebrow { color: #F7A928; }
+  .mock-c1 .mock-hero h3 { font-family: "Red Hat Display", sans-serif; font-weight: 900; letter-spacing: -.02em; }
+  .mock-c1 .mock-hero h3 em { font-style: normal; color: #F7A928; }
+  .mock-c1 .mock-hero p { color: rgba(245,239,226,.74); }
+  .mock-c1 .ghost { background: transparent; color: #F5EFE2; box-shadow: inset 0 0 0 1.5px rgba(245,239,226,.35); }
+  .mock-c1 .mock-trust { color: rgba(245,239,226,.8); }
+  .mock-c1 .mock-trust span::before { color: #F7A928; }
+
+  /* Concept 2 site theme: fresh, bright and green, with a barrier the ants won't cross */
+  .mock-c2 .mock-links { color: #2E5A48; }
+  .mock-c2 .mock-btn { background: #1A8040; color: #fff; border-radius: 999px; }
+  .mock-c2 .mock-hero { background: radial-gradient(45% 70% at 88% 8%, rgba(255,196,61,.28), transparent 70%), linear-gradient(180deg, #F7FBF4 0%, #E9F5E2 100%); color: #12402F; }
+  .mock-c2 .mock-eyebrow { color: #1A8040; }
+  .mock-c2 .mock-hero h3 { font-family: Nunito, sans-serif; font-weight: 900; letter-spacing: -.02em; }
+  .mock-c2 .mock-hero h3 em { font-style: normal; background: linear-gradient(transparent 64%, rgba(255,196,61,.75) 64%, rgba(255,196,61,.75) 92%, transparent 92%); }
+  .mock-c2 .mock-hero p { color: #3F6456; }
+  .mock-c2 .ghost { background: #fff; color: #12402F; box-shadow: inset 0 0 0 1.5px #BFD9C4; }
+  .mock-c2 .mock-trust { color: #2E5A48; }
+  .mock-c2 .mock-trust span::before { color: #1A8040; }
+
+  /* Concept 3 site theme: sunny, sandy, a little retro. The owl lives in the hero. */
+  .mock-c3 .mock-nav { background: #F6E8CC; border-bottom-color: #EAD6AE; }
+  .mock-c3 .mock-links { color: #5B3A22; }
+  .mock-c3 .mock-btn { background: #B84A33; color: #fff; border-radius: 999px; box-shadow: 0 3px 0 #5B3A22; }
+  .mock-c3 .mock-hero { background: linear-gradient(180deg, #BFE6EC 0%, #DDF1EE 46%, #F6E8CC 72%, #ECC994 100%); color: #5B3A22; }
+  .mock-c3 .mock-eyebrow { color: #B84A33; }
+  .mock-c3 .mock-hero h3 { font-family: Shrikhand, serif; font-weight: 400; font-size: 44px; line-height: 1.08; letter-spacing: 0; }
+  .mock-c3 .mock-hero h3 em { font-style: normal; color: #B84A33; }
+  .mock-c3 .mock-hero p { color: #6E5038; }
+  .mock-c3 .ghost { background: transparent; color: #5B3A22; box-shadow: inset 0 0 0 2px #5B3A22; }
+  .mock-c3 .mock-trust { color: #5B3A22; }
+  .mock-c3 .mock-trust span::before { color: #B84A33; }
+
+  .sheet-foot { margin-top: 32px; padding: 24px 28px; border-radius: 18px; border: 1px dashed #cfccc4; color: #3d434d; }
+  .sheet-foot h2 { font-size: 16px; margin: 0 0 6px; }
+  .sheet-foot p { margin: 0; }
+
+  @media (max-width: 900px) {
+    .grid > * { grid-column: 1 / -1; }
+    .mock-links { display: none; }
+    .mock-hero { grid-template-columns: 1fr; gap: 0; padding: 40px 0 0; }
+    .mock-copy { padding: 0 28px 8px; }
+    .mock-art { -webkit-mask-image: none; mask-image: none; }
+    .mock-hero h3 { font-size: 36px; }
+    .mock-c3 .mock-hero h3 { font-size: 34px; }
+  }
+  @media (max-width: 560px) {
+    .tile { min-height: 0; padding: 40px 18px 24px; }
+    .t-main, .t-dark { min-height: 160px; }
+    .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .sw div { padding: 8px 6px 9px 8px; }
+    .sw b { font-size: 11.5px; }
+    .mock-nav { padding: 12px 16px; }
+    .mock-nav .mock-btn { display: none; }
+    .mock-logo { height: 40px; }
+    .mock-hero { padding-top: 34px; }
+    .mock-copy { padding: 0 18px 8px; }
+    .mock-hero h3 { font-size: 31px; }
+    .mock-c3 .mock-hero h3 { font-size: 29px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== Shared SVG definitions ===================== -->
+<!-- DEFS START -->
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+  <defs>
+    <linearGradient id="c2-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color: var(--c2-g1, #8CCB3F)"/>
+      <stop offset="1" style="stop-color: var(--c2-g2, #1A8040)"/>
+    </linearGradient>
+    <clipPath id="c3-clip"><circle cx="50" cy="50" r="46"/></clipPath>
+    <!-- a little ant, facing right, for the concept 2 hero -->
+    <symbol id="ant" viewBox="-9 -6 18 12">
+      <g fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round">
+        <path d="M-.5 0 L-3 -4 M-.5 0 L-3 4 M.8 0 L.6 -4.4 M.8 0 L.6 4.4 M2 0 L4.2 -3.8 M2 0 L4.2 3.8"/>
+        <path d="M5.6 -.9 C6.8 -2.4 7.6 -2.8 8.6 -3.1 M5.6 .9 C6.8 2.4 7.6 2.8 8.6 3.1"/>
+      </g>
+      <g fill="currentColor"><ellipse cx="-4.6" cy="0" rx="3.6" ry="2.6"/><ellipse cx=".8" cy="0" rx="2" ry="1.5"/><circle cx="4.6" cy="0" r="1.9"/></g>
+    </symbol>
+  </defs>
+
+  <!-- Concept 1: a mid-century butterfly-roof house that is also an owl.
+       The roof is the brow, the porthole windows are the eyes, the stilts are the feet. -->
+  <symbol id="c1-mark" viewBox="0 2 100 100">
+    <path d="M1 12 L50 33 L99 12 L50 42 Z" style="fill: var(--c1-roof, #14213D)"/>
+    <path d="M13 24 L50 46 L87 24 L87 79 L13 79 Z" style="fill: var(--c1-body, #14213D)"/>
+    <rect x="5" y="79" width="90" height="5.5" rx="2.75" style="fill: var(--c1-roof, #14213D)"/>
+    <g style="fill: var(--c1-ring, #F5EFE2)"><circle cx="31" cy="58" r="14.5"/><circle cx="69" cy="58" r="14.5"/></g>
+    <g style="fill: var(--c1-eye, #F7A928)"><circle cx="31" cy="58" r="11.3"/><circle cx="69" cy="58" r="11.3"/></g>
+    <g style="fill: var(--c1-pupil, #14213D)"><circle cx="32.3" cy="59" r="5.6"/><circle cx="67.7" cy="59" r="5.6"/></g>
+    <g style="fill: var(--c1-ring, #F5EFE2)"><circle cx="34.2" cy="56.6" r="1.7"/><circle cx="69.6" cy="56.6" r="1.7"/></g>
+    <g style="fill: var(--c1-eye, #F7A928)">
+      <path d="M46 61 L54 61 L50 69.5 Z"/>
+      <rect x="29" y="84.5" width="4.5" height="8" rx="1.2"/><rect x="66.5" y="84.5" width="4.5" height="8" rx="1.2"/>
+    </g>
+  </symbol>
+
+  <!-- Concept 2: the W of Wise is a house. The middle peak is the roof over a sunny door,
+       and the last stroke grows into a leaf. -->
+  <symbol id="c2-mark" viewBox="0 0 100 100">
+    <path d="M84 45 C80 27 86 13 99 3 C101.5 19 97 35 84 45 Z" style="fill: var(--c2-leaf, #7CC243)"/>
+    <path d="M86.5 39 C89 29 93 19 97.5 9" fill="none" stroke-width="1.4" stroke-linecap="round" style="stroke: var(--c2-vein, #fff)" opacity=".85"/>
+    <path d="M8 21 L28 80 L50 32 L72 80 L85 43" fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#c2-grad)"/>
+    <path d="M44.5 87 V71.5 a5.5 5.5 0 0 1 11 0 V87 Z" style="fill: var(--c2-door, #FFC43D)"/>
+  </symbol>
+
+  <!-- Concept 3: the Florida burrowing owl, standing guard at its burrow -->
+  <symbol id="c3-owl" viewBox="0 0 100 100">
+    <g stroke="#D8C39A" stroke-width="2.2" stroke-linecap="round" fill="none">
+      <path d="M46 73 L45 84 M45 84 l-3.2 1.4 M45 84 l2 2"/><path d="M54 73 L55 84 M55 84 l3.2 1.4 M55 84 l-2 2"/>
+    </g>
+    <path d="M50 45 C62 45 64.5 55 63.5 63 C62.5 71.5 57.5 77 50 77 C42.5 77 37.5 71.5 36.5 63 C35.5 55 38 45 50 45 Z" fill="#7A4B2A"/>
+    <ellipse cx="50" cy="64" rx="8" ry="11" fill="#F6E8CC"/>
+    <path d="M45.5 59h3M51.5 61h3M46 65h3M51 68h3M47.5 72h3" stroke="#A2714A" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M37.5 55 C33 61 35 71 41 76 C40 68 40 61 42 56 Z M62.5 55 C67 61 65 71 59 76 C60 68 60 61 58 56 Z" fill="#5E3920"/>
+    <g fill="#F6E8CC"><circle cx="39.8" cy="61" r="1"/><circle cx="38.8" cy="66" r="1"/><circle cx="60.2" cy="61" r="1"/><circle cx="61.2" cy="66" r="1"/></g>
+    <circle cx="50" cy="36" r="16" fill="#7A4B2A"/>
+    <g fill="#F6E8CC"><circle cx="42.5" cy="24.5" r="1.25"/><circle cx="50" cy="22.2" r="1.25"/><circle cx="57.5" cy="24.5" r="1.25"/><circle cx="46" cy="27.5" r="1"/><circle cx="54" cy="27.5" r="1"/></g>
+    <ellipse cx="50" cy="39" rx="13" ry="10.5" fill="#C29466"/>
+    <g fill="#FFD23F"><circle cx="43.8" cy="38.5" r="5.8"/><circle cx="56.2" cy="38.5" r="5.8"/></g>
+    <g fill="#1B130D"><circle cx="44.2" cy="38.8" r="2.9"/><circle cx="55.8" cy="38.8" r="2.9"/></g>
+    <g fill="#fff"><circle cx="45.3" cy="37.6" r=".9"/><circle cx="56.9" cy="37.6" r=".9"/></g>
+    <path d="M37.5 33.5 Q43.5 28 49.2 32.6 M50.8 32.6 Q56.5 28 62.5 33.5" stroke="#FFF8EA" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M48.2 43.4 L51.8 43.4 L50 47.4 Z" fill="#E6D39B"/>
+    <path d="M42.5 48.5 Q50 53.5 57.5 48.5" stroke="#FFF8EA" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="c3-mark" viewBox="0 0 100 100">
+    <g clip-path="url(#c3-clip)">
+      <rect width="100" height="100" fill="#A7DCE3"/>
+      <circle cx="50" cy="47" r="30" fill="#F7B733"/>
+      <path d="M15 78L1.9 74.5M15 78L2.6 69.0M15 78L5.9 64.2M15 78L11.3 61.4M15 78L17.4 61.6M15 78L22.5 64.6M15 78L25.4 69.3M86 79L77.4 71.8M86 79L80.4 67.5M86 79L85.5 65.1M86 79L91.2 66.1M86 79L95.2 70.1M86 79L96.5 75.2" stroke="#3E7A55" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <path d="M-2 79 Q 26 68 50 71 T 102 77 L102 102 L-2 102 Z" fill="#E9BE82"/>
+      <ellipse cx="77" cy="84" rx="8.5" ry="4.2" fill="#5B3A22"/>
+      <use href="#c3-owl" width="100" height="100"/>
+    </g>
+    <circle cx="50" cy="50" r="46" fill="none" stroke-width="3.5" style="stroke: var(--c3-ring, #5B3A22)"/>
+  </symbol>
+
+  <!-- Concept 3 small-size icon: just the owl's face -->
+  <symbol id="c3-icon" viewBox="0 0 100 100">
+    <circle cx="50" cy="52" r="40" fill="#7A4B2A"/>
+    <g fill="#F6E8CC"><circle cx="31" cy="25" r="3"/><circle cx="50" cy="19" r="3"/><circle cx="69" cy="25" r="3"/></g>
+    <ellipse cx="50" cy="60" rx="33" ry="27" fill="#C29466"/>
+    <g fill="#FFD23F"><circle cx="34" cy="58" r="14.5"/><circle cx="66" cy="58" r="14.5"/></g>
+    <g fill="#1B130D"><circle cx="35" cy="59" r="7.3"/><circle cx="65" cy="59" r="7.3"/></g>
+    <path d="M17 44 Q32 30 47 42 M53 42 Q68 30 83 44" stroke="#FFF8EA" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M45 70 L55 70 L50 80 Z" fill="#E6D39B"/>
+  </symbol>
+
+  <!-- Lockups (mark + wordmark). Each outer <svg> uses the same viewBox as its symbol. -->
+  <symbol id="c1-lockup" viewBox="0 8 268 86">
+    <use href="#c1-mark" x="0" y="0" width="100" height="100"/>
+    <text x="112" y="66" font-family="Red Hat Display" font-weight="900" font-size="68" letter-spacing="-1.5" style="fill: var(--c1-word, #14213D)">Wise</text>
+    <text x="115" y="91" font-family="Red Hat Display" font-weight="800" font-size="14.5" letter-spacing="3.25" style="fill: var(--c1-sub, #C9820F)">PEST CONTROL</text>
+  </symbol>
+
+  <symbol id="c2-lockup" viewBox="0 0 200 100">
+    <use href="#c2-mark" x="0" y="0" width="84" height="84"/>
+    <text x="85" y="73" font-family="Nunito" font-weight="900" font-size="86" letter-spacing="-1" style="fill: var(--c2-word, #12402F)">ise</text>
+    <text x="3" y="98" font-family="Nunito" font-weight="800" font-size="17" letter-spacing="5.5" style="fill: var(--c2-sub, #1A8040)">PEST CONTROL</text>
+  </symbol>
+
+  <symbol id="c3-lockup" viewBox="0 0 304 100">
+    <use href="#c3-mark" x="0" y="0" width="100" height="100"/>
+    <text x="111" y="65" font-family="Shrikhand" font-size="70" style="fill: var(--c3-word, #5B3A22)">Wise</text>
+    <text x="115" y="91" font-family="Oswald" font-weight="600" font-size="15" letter-spacing="1.7" style="fill: var(--c3-sub, #B84A33)">PEST CONTROL · FLORIDA</text>
+  </symbol>
+</svg>
+<!-- DEFS END -->
+
+<main class="wrap">
+  <header class="sheet-head">
+    <div class="kicker">Brand exploration · Round 1</div>
+    <h1>WisePestControl — logo concepts</h1>
+    <p class="lede">Three directions for a Florida pest control company, each with a palette sampled from the logo that carries straight into the website. Two of them build on the owl, the natural symbol of wisdom and nature's own pest control. The third is a monogram for a more classic, green look. Every mark is vector, holds up at favicon size, and works on light and dark backgrounds.</p>
+  </header>
+
+  <!-- ===================== Concept 1 ===================== -->
+  <section class="concept" id="concept-1">
+    <header class="concept-head">
+      <span class="num">01</span>
+      <h2>Night Watch</h2>
+      <span class="tags">Clever · watchful · modern</span>
+      <p>An owl that is also a house. The butterfly roof of a Florida mid-century home becomes the owl's brow, the round porthole windows become its eyes, and the stilts become its feet. The message: a wise expert keeping an eye on your home. Midnight blue and warm amber give it a calm, premium feel. On the site, the hero turns into a night scene where a flashlight beam finds the pests hiding in the dark.</p>
+    </header>
+    <div class="grid">
+      <figure class="tile t-main"><span class="cap">Primary logo</span>
+        <svg class="lockup" viewBox="0 8 268 86" role="img" aria-label="Wise Pest Control, concept 1"><use href="#c1-lockup"/></svg>
+      </figure>
+      <figure class="tile t-dark dark" style="background:#14213D; --c1-roof:#F5EFE2; --c1-body:#22375A; --c1-pupil:#0E1830; --c1-word:#F5EFE2; --c1-sub:#F7A928"><span class="cap">On dark</span>
+        <svg class="lockup" viewBox="0 8 268 86" role="img" aria-label="Concept 1 on dark"><use href="#c1-lockup"/></svg>
+      </figure>
+      <figure class="tile t-icons"><span class="cap">Icon · social · favicon</span>
+        <div class="appicon" style="background:#14213D; --c1-roof:#F5EFE2; --c1-body:#22375A; --c1-pupil:#0E1830"><svg viewBox="0 0 100 100"><use href="#c1-mark"/></svg></div>
+        <div class="avatar" style="background:#F5EFE2"><svg viewBox="0 0 100 100"><use href="#c1-mark"/></svg></div>
+        <div class="favs">
+          <div class="tab"><svg viewBox="0 0 100 100"><use href="#c1-mark"/></svg>Wise Pest Control</div>
+          <div class="favsizes">
+            <div><svg width="48" height="48" viewBox="0 0 100 100"><use href="#c1-mark"/></svg><small>48</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 100 100"><use href="#c1-mark"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 100 100"><use href="#c1-mark"/></svg><small>16</small></div>
+          </div>
+        </div>
+      </figure>
+      <div class="tile t-palette"><span class="cap">Palette &amp; type</span>
+        <div class="swatches">
+          <div class="sw" style="--c:#14213D"><i></i><div><b>Midnight</b><code>#14213D</code><em>Text, dark sections</em></div></div>
+          <div class="sw" style="--c:#F7A928"><i></i><div><b>Amber</b><code>#F7A928</code><em>Eyes, buttons</em></div></div>
+          <div class="sw" style="--c:#A8640A"><i></i><div><b>Bronze</b><code>#A8640A</code><em>Amber text on light</em></div></div>
+          <div class="sw" style="--c:#22375A"><i></i><div><b>Dusk</b><code>#22375A</code><em>Cards on dark</em></div></div>
+          <div class="sw" style="--c:#F5EFE2"><i></i><div><b>Moonlight</b><code>#F5EFE2</code><em>Light sections</em></div></div>
+        </div>
+        <div class="type"><span><b>Headings:</b> Red Hat Display Black</span><span><b>Body:</b> Inter</span></div>
+      </div>
+      <div class="tile t-site"><span class="cap">How it carries into the website</span>
+        <div class="mock mock-c1">
+          <div class="mock-chrome"><i></i><i></i><i></i><span>wisepestcontrolfl.com</span></div>
+          <div class="mock-nav">
+            <svg class="mock-logo" viewBox="0 8 268 86" aria-hidden="true"><use href="#c1-lockup"/></svg>
+            <div class="mock-links"><span>Services</span><span>Termites</span><span>Plans</span><span>Reviews</span></div>
+            <span class="mock-btn">Free Inspection</span>
+          </div>
+          <div class="mock-hero">
+            <div class="mock-copy">
+              <span class="mock-eyebrow">Florida pest control</span>
+              <h3>Pests hide. <em>We know where.</em></h3>
+              <p>Termites in the walls, roaches under the sink, rats in the attic. Our licensed techs find where they get in and shut it down for good.</p>
+              <div class="mock-ctas"><span class="mock-btn">Book a Free Inspection</span><span class="mock-btn ghost">(555) 555-0123</span></div>
+              <div class="mock-trust"><span>Licensed &amp; insured</span><span>Pet-friendly options</span><span>Free re-service</span></div>
+            </div>
+            <svg class="mock-art" viewBox="0 0 400 300" aria-hidden="true">
+              <defs>
+                <radialGradient id="c1-glow"><stop offset="0" stop-color="#F7A928" stop-opacity=".5"/><stop offset="1" stop-color="#F7A928" stop-opacity="0"/></radialGradient>
+                <radialGradient id="c1-pool"><stop offset="0" stop-color="#FFE0A0" stop-opacity=".95"/><stop offset=".55" stop-color="#F7A928" stop-opacity=".5"/><stop offset="1" stop-color="#F7A928" stop-opacity="0"/></radialGradient>
+                <linearGradient id="c1-beam" gradientUnits="userSpaceOnUse" x1="-10" y1="196" x2="150" y2="276"><stop offset="0" stop-color="#FFE0A0" stop-opacity="0"/><stop offset="1" stop-color="#FFE0A0" stop-opacity=".38"/></linearGradient>
+                <filter id="c1-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+                <mask id="c1-moon"><circle cx="352" cy="46" r="20" fill="#fff"/><circle cx="362" cy="39" r="17" fill="#000"/></mask>
+              </defs>
+              <g fill="#F5EFE2">
+                <circle cx="40" cy="30" r="1.4" opacity=".7"/><circle cx="118" cy="16" r="1" opacity=".5"/><circle cx="190" cy="40" r="1.6" opacity=".8"/>
+                <circle cx="262" cy="18" r="1.1" opacity=".6"/><circle cx="302" cy="84" r="1.2" opacity=".5"/><circle cx="84" cy="92" r="1" opacity=".45"/>
+                <circle cx="150" cy="70" r="1" opacity=".5"/><circle cx="385" cy="118" r="1.2" opacity=".55"/><circle cx="230" cy="62" r=".9" opacity=".5"/>
+              </g>
+              <rect x="320" y="14" width="64" height="64" fill="#F5EFE2" mask="url(#c1-moon)"/>
+              <circle cx="222" cy="178" r="58" fill="url(#c1-glow)"/><circle cx="298" cy="178" r="58" fill="url(#c1-glow)"/>
+              <use href="#c1-mark" x="160" y="66" width="200" height="200" style="--c1-roof:#0A1226; --c1-body:#0A1226; --c1-ring:#FFE3A3; --c1-eye:#F7A928; --c1-pupil:#0A1226"/>
+              <path d="M0 256 Q 200 240 400 254 V300 H0 Z" fill="#0A1226"/>
+              <path d="M-10 192 L186 268 L150 290 L24 294 L-10 202 Z" fill="url(#c1-beam)" filter="url(#c1-soft)"/>
+              <ellipse cx="104" cy="276" rx="86" ry="17" fill="url(#c1-pool)"/>
+              <!-- caught in the light: a palmetto bug and two ants -->
+              <g fill="#0A1226" stroke="#0A1226" stroke-linecap="round">
+                <g transform="translate(92 274) rotate(-8)">
+                  <path d="M-4 -2 L-9 -7 M0 -3 L-1 -9 M4 -2 L8 -8 M-4 2 L-9 7 M0 3 L-1 9 M4 2 L8 8" stroke-width="1.3" fill="none"/>
+                  <path d="M10 -1 C16 -6 22 -8 28 -8 M10 1 C16 -3 22 -3 27 -2" stroke-width=".9" fill="none"/>
+                  <ellipse cx="-2" cy="0" rx="11" ry="5.4" stroke="none"/><ellipse cx="9" cy="0" rx="3.4" ry="3" stroke="none"/>
+                </g>
+                <use href="#ant" x="130" y="272" width="18" height="12" style="color:#0A1226"/>
+                <use href="#ant" x="150" y="277" width="16" height="11" style="color:#0A1226"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Concept 2 ===================== -->
+  <section class="concept" id="concept-2">
+    <header class="concept-head">
+      <span class="num">02</span>
+      <h2>Homegrown</h2>
+      <span class="tags">Friendly · green · family-first</span>
+      <p>The W of Wise doubles as a house. Its middle peak is the roof over a sunny yellow door, and its last stroke grows into a leaf. It feels friendly and family-first without the usual bug-in-a-red-circle clichés, and the monogram looks sharp on trucks, uniforms and yard signs. Fresh greens and sunshine yellow keep it bright and approachable. On the site, a line of ants marches toward the house and turns back at the protective barrier.</p>
+    </header>
+    <div class="grid">
+      <figure class="tile t-main"><span class="cap">Primary logo</span>
+        <svg class="lockup" viewBox="0 0 200 100" role="img" aria-label="Wise Pest Control, concept 2"><use href="#c2-lockup"/></svg>
+      </figure>
+      <figure class="tile t-dark dark" style="background:#12402F; --c2-g1:#B5E36A; --c2-g2:#4CB860; --c2-leaf:#A8DB5A; --c2-vein:#12402F; --c2-word:#fff; --c2-sub:#A8DB5A"><span class="cap">On dark</span>
+        <svg class="lockup" viewBox="0 0 200 100" role="img" aria-label="Concept 2 on dark"><use href="#c2-lockup"/></svg>
+      </figure>
+      <figure class="tile t-icons"><span class="cap">Icon · social · favicon</span>
+        <div class="appicon" style="background:#12402F; --c2-g1:#B5E36A; --c2-g2:#4CB860; --c2-leaf:#A8DB5A; --c2-vein:#12402F"><svg viewBox="0 0 100 100"><use href="#c2-mark"/></svg></div>
+        <div class="avatar" style="background:#EFF7EC"><svg viewBox="0 0 100 100"><use href="#c2-mark"/></svg></div>
+        <div class="favs">
+          <div class="tab"><svg viewBox="0 0 100 100"><use href="#c2-mark"/></svg>Wise Pest Control</div>
+          <div class="favsizes">
+            <div><svg width="48" height="48" viewBox="0 0 100 100"><use href="#c2-mark"/></svg><small>48</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 100 100"><use href="#c2-mark"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 100 100"><use href="#c2-mark"/></svg><small>16</small></div>
+          </div>
+        </div>
+      </figure>
+      <div class="tile t-palette"><span class="cap">Palette &amp; type</span>
+        <div class="swatches">
+          <div class="sw" style="--c:#12402F"><i></i><div><b>Pine</b><code>#12402F</code><em>Text, dark sections</em></div></div>
+          <div class="sw" style="--c:#1A8040"><i></i><div><b>Leaf</b><code>#1A8040</code><em>Brand, buttons</em></div></div>
+          <div class="sw" style="--c:#8CCB3F"><i></i><div><b>Sprout</b><code>#8CCB3F</code><em>Gradients, accents</em></div></div>
+          <div class="sw" style="--c:#FFC43D"><i></i><div><b>Sunshine</b><code>#FFC43D</code><em>Highlights, badges</em></div></div>
+          <div class="sw" style="--c:#EFF7EC"><i></i><div><b>Mint</b><code>#EFF7EC</code><em>Light sections</em></div></div>
+        </div>
+        <div class="type"><span><b>Headings:</b> Nunito Black</span><span><b>Body:</b> Inter</span></div>
+      </div>
+      <div class="tile t-site"><span class="cap">How it carries into the website</span>
+        <div class="mock mock-c2">
+          <div class="mock-chrome"><i></i><i></i><i></i><span>wisepestcontrolfl.com</span></div>
+          <div class="mock-nav">
+            <svg class="mock-logo" viewBox="0 0 200 100" aria-hidden="true"><use href="#c2-lockup"/></svg>
+            <div class="mock-links"><span>Services</span><span>Pet-Friendly</span><span>Plans</span><span>Reviews</span></div>
+            <span class="mock-btn">Free Quote</span>
+          </div>
+          <div class="mock-hero">
+            <div class="mock-copy">
+              <span class="mock-eyebrow">Family- and pet-friendly pest control</span>
+              <h3>A barrier bugs <em>won't cross.</em></h3>
+              <p>Targeted, low-impact treatments around the outside of your home. Pests stay out, and nothing gets sprayed where your family lives.</p>
+              <div class="mock-ctas"><span class="mock-btn">Get a Free Quote</span><span class="mock-btn ghost">(555) 555-0123</span></div>
+              <div class="mock-trust"><span>Pet-friendly options</span><span>Free re-service</span><span>No contracts</span></div>
+            </div>
+            <svg class="mock-art" viewBox="0 0 400 300" aria-hidden="true">
+              <defs>
+                <radialGradient id="c2-dome" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".8" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#E3F4D6" stop-opacity=".9"/></radialGradient>
+              </defs>
+              <path d="M0 250 Q 200 226 400 246 V300 H0 Z" fill="#CFE8B6"/>
+              <path d="M0 268 Q 200 250 400 266 V300 H0 Z" fill="#B9DD98"/>
+              <!-- the protective barrier -->
+              <path d="M104 252 A128 128 0 0 1 360 252 Z" fill="url(#c2-dome)"/>
+              <path d="M104 252 A128 128 0 0 1 360 252" fill="none" stroke="#8CCB3F" stroke-width="4"/>
+              <ellipse cx="232" cy="252" rx="128" ry="15" fill="none" stroke="#1A8040" stroke-width="2.4" stroke-dasharray="7 6" opacity=".7"/>
+              <!-- the house -->
+              <path d="M186 250 V194 H278 V250 Z" fill="#fff" stroke="#12402F" stroke-width="3.5" stroke-linejoin="round"/>
+              <path d="M172 198 L232 150 L292 198" fill="none" stroke="#12402F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M220 250 V222 a12 12 0 0 1 24 0 V250 Z" fill="#FFC43D" stroke="#12402F" stroke-width="3.5"/>
+              <rect x="195" y="207" width="16" height="16" rx="2" fill="#BFE6EC" stroke="#12402F" stroke-width="3"/>
+              <rect x="253" y="207" width="16" height="16" rx="2" fill="#BFE6EC" stroke="#12402F" stroke-width="3"/>
+              <!-- the ant trail: in from the left, a U-turn at the barrier, and back out -->
+              <path d="M-4 282 C 40 280 74 276 94 268 C 106 262 104 254 92 252 C 70 249 38 252 -4 256" fill="none" stroke="#12402F" stroke-width="1.2" stroke-dasharray="1.5 5" stroke-linecap="round" opacity=".45"/>
+              <g style="color:#12402F">
+                <use href="#ant" x="4" y="274" width="18" height="12" transform="rotate(-2 13 280)"/>
+                <use href="#ant" x="34" y="272" width="18" height="12" transform="rotate(-4 43 278)"/>
+                <use href="#ant" x="64" y="268" width="18" height="12" transform="rotate(-12 73 274)"/>
+                <use href="#ant" x="92" y="252" width="18" height="12" transform="rotate(-100 101 258)"/>
+                <use href="#ant" x="66" y="245" width="18" height="12" transform="rotate(176 75 251)"/>
+                <use href="#ant" x="30" y="247" width="18" height="12" transform="rotate(182 39 253)"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Concept 3 ===================== -->
+  <section class="concept" id="concept-3">
+    <header class="concept-head">
+      <span class="num">03</span>
+      <h2>Florida Native</h2>
+      <span class="tags">Local · charming · retro</span>
+      <p>The Florida burrowing owl, the little ground owl that lives in open sandy fields across the state and eats a lot of bugs, standing guard at its burrow under the Florida sun. It works as a mascot as much as a logo: trucks, uniforms, stickers and social posts. A retro badge and a bold script make it the most local, most memorable option of the three, in sky, sun and sand. On the site, the owl stands in the hero and turns its head to follow the cursor.</p>
+    </header>
+    <div class="grid">
+      <figure class="tile t-main"><span class="cap">Primary logo</span>
+        <svg class="lockup" viewBox="0 0 304 100" role="img" aria-label="Wise Pest Control, concept 3"><use href="#c3-lockup"/></svg>
+      </figure>
+      <figure class="tile t-dark dark" style="background:#3A2616; --c3-ring:#F6E8CC; --c3-word:#F6E8CC; --c3-sub:#F7B733"><span class="cap">On dark</span>
+        <svg class="lockup" viewBox="0 0 304 100" role="img" aria-label="Concept 3 on dark"><use href="#c3-lockup"/></svg>
+      </figure>
+      <figure class="tile t-icons"><span class="cap">Icon · social · favicon</span>
+        <div class="appicon" style="background:#F7B733"><svg viewBox="0 0 100 100"><use href="#c3-icon"/></svg></div>
+        <div class="avatar" style="background:#F6E8CC"><svg viewBox="0 0 100 100" style="width:88%;height:88%"><use href="#c3-mark"/></svg></div>
+        <div class="favs">
+          <div class="tab"><svg viewBox="0 0 100 100"><use href="#c3-icon"/></svg>Wise Pest Control</div>
+          <div class="favsizes">
+            <div><svg width="48" height="48" viewBox="0 0 100 100"><use href="#c3-icon"/></svg><small>48</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 100 100"><use href="#c3-icon"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 100 100"><use href="#c3-icon"/></svg><small>16</small></div>
+          </div>
+        </div>
+      </figure>
+      <div class="tile t-palette"><span class="cap">Palette &amp; type</span>
+        <div class="swatches">
+          <div class="sw" style="--c:#5B3A22"><i></i><div><b>Burrow</b><code>#5B3A22</code><em>Text, dark sections</em></div></div>
+          <div class="sw" style="--c:#B84A33"><i></i><div><b>Terracotta</b><code>#B84A33</code><em>Buttons, accents</em></div></div>
+          <div class="sw" style="--c:#F7B733"><i></i><div><b>Sunshine</b><code>#F7B733</code><em>Sun, highlights</em></div></div>
+          <div class="sw" style="--c:#A7DCE3"><i></i><div><b>Gulf Sky</b><code>#A7DCE3</code><em>Sky, soft accents</em></div></div>
+          <div class="sw" style="--c:#F6E8CC"><i></i><div><b>Sand</b><code>#F6E8CC</code><em>Light sections</em></div></div>
+        </div>
+        <div class="type"><span><b>Headings:</b> Shrikhand</span><span><b>Labels:</b> Oswald SemiBold</span><span><b>Body:</b> Inter</span></div>
+      </div>
+      <div class="tile t-site"><span class="cap">How it carries into the website</span>
+        <div class="mock mock-c3">
+          <div class="mock-chrome"><i></i><i></i><i></i><span>wisepestcontrolfl.com</span></div>
+          <div class="mock-nav">
+            <svg class="mock-logo" viewBox="0 0 304 100" aria-hidden="true"><use href="#c3-lockup"/></svg>
+            <div class="mock-links"><span>Services</span><span>Termites</span><span>Our Owl</span><span>Reviews</span></div>
+            <span class="mock-btn">Book a Visit</span>
+          </div>
+          <div class="mock-hero">
+            <div class="mock-copy">
+              <span class="mock-eyebrow">Locally owned · Florida</span>
+              <h3>Florida's <em>original</em> pest control.</h3>
+              <p>Burrowing owls have been keeping Florida's bugs in check for a very long time. We took notes, then added licensed techs and a truck.</p>
+              <div class="mock-ctas"><span class="mock-btn">Book a Visit</span><span class="mock-btn ghost">(555) 555-0123</span></div>
+              <div class="mock-trust"><span>Family-owned</span><span>Licensed &amp; insured</span><span>Same-week visits</span></div>
+            </div>
+            <svg class="mock-art" viewBox="0 0 400 300" aria-hidden="true">
+              <circle cx="232" cy="142" r="104" fill="#F7B733"/>
+              <circle cx="232" cy="142" r="128" fill="none" stroke="#F7B733" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity=".7"/>
+              <path d="M84 256L36.7 247.7M84 256L37.6 230.0M84 256L46.0 213.0M84 256L61.5 200.7M84 256L81.0 196.4M84 256L100.2 201.0M84 256L115.1 212.8M84 256L123.3 228.5M376 262L342.7 242.8M376 262L349.7 227.7M376 262L363.9 216.9M376 262L382.3 214.4M376 262L399.4 221.5M376 262L410.3 235.7M376 262L413.1 252.1" stroke="#3E7A55" stroke-width="7" stroke-linecap="round" fill="none"/>
+              <path d="M-2 250 Q 110 214 232 224 T 402 240 V302 H-2 Z" fill="#E9BE82"/>
+              <path d="M-2 272 Q 140 252 260 262 T 402 262 V302 H-2 Z" fill="#E0AE6E"/>
+              <ellipse cx="318" cy="252" rx="30" ry="9" fill="#5B3A22"/>
+              <use href="#c3-owl" x="87" y="-22" width="290" height="290"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sheet-foot">
+    <h2>Next step</h2>
+    <p>Pick a direction, or mix and match (for example, the owl-house from 01 with the palette from 02). The chosen logo then gets refined and exported as final SVG/PNG files and a favicon set before the site build starts.</p>
+  </footer>
+</main>
+</body>
+</html>
