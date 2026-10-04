@@ -49,6 +49,12 @@ netlify.toml        Netlify config: publish the root as-is, security headers
 
 The nav links jump to sections on the one page; there are no separate subpages.
 
+## Studio credit
+
+The bar under the footer ("Made by MM Brand Studio", with "Want a site like this?" on the right) is the studio's own banner and links to mmbrand.studio. It keeps the studio's colours on purpose, not this site's palette. Its logo and words are drawn as shapes, so it needs no fonts and no image files.
+
+It comes in two versions, and the only difference in the markup is one class: `mm-madeby--light` for a site that is mostly white (used here) and `mm-madeby--dark` for one that is mostly dark. The markup sits right under the footer in `index.html`, and its styles are the "Studio credit" block in `css/styles.css`. To remove the bar, delete both.
+
 ## About the content
 
 The business name and phone number are real; everything else is placeholder copy for the demo. The email, reviews, ratings, prices, home counts and claims such as "licensed & insured" are invented and should be replaced before this is used as a live business site. The copy says "pet-friendly options" rather than "safe", because pest control advertising shouldn't claim that treatments are safe. The quote form validates and shows a confirmation, but sends nothing: there's a marked spot in `js/main.js` for connecting a form service.

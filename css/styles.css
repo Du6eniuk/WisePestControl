@@ -1146,6 +1146,52 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 700px) { .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1000px) { .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 3rem; } }
 
+/* Studio credit: "Made by MM Brand Studio", under the footer.
+   It is the studio's own banner, so it keeps the studio's colours rather than
+   this site's palette. There are two versions, chosen by a class in the markup
+   (index.html, right under the footer): mm-madeby--light for a site that is mostly
+   white, mm-madeby--dark for one that is mostly dark. The block is
+   self-contained, so it can be copied to another site as it is. */
+.mm-madeby {
+  --mm-bg: #181818; --mm-edge: #2c2c2a; --mm-ink: #f5f3ed; --mm-soft: #b8b4a8; --mm-ask: #f5c518; --mm-rule: 2px; --mm-focus: #f5c518;
+  border-top: 1px solid var(--mm-edge); background: var(--mm-bg);
+}
+.mm-madeby--light { --mm-bg: #fff; --mm-edge: #e4e2dc; --mm-ink: #181818; --mm-soft: #6f6c64; --mm-ask: #181818; --mm-rule: 3px; --mm-focus: #181818; }
+.mm-madeby__link {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px;
+  width: min(100% - 2 * var(--gutter, 20px), var(--wrap, 1200px)); min-height: 56px; margin-inline: auto; padding-block: 14px;
+  color: var(--mm-ink); text-decoration: none;
+  /* a yellow line along the bottom, drawn in from the left on hover */
+  background: linear-gradient(#f5c518, #f5c518) no-repeat 0 100% / 0 var(--mm-rule);
+  transition: background-size .5s cubic-bezier(.2, .7, .2, 1);
+}
+.mm-madeby__text { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.mm-madeby__by, .mm-madeby__ask { display: inline-flex; align-items: center; gap: 8px; }
+.mm-madeby__ask { gap: 9px; color: var(--mm-ask); }
+.mm-madeby svg { display: block; flex: none; width: auto; fill: currentColor; }
+.mm-madeby__lead { height: 8px; color: var(--mm-soft); transition: color .3s ease; }
+.mm-madeby__logo { height: 23px; }
+.mm-madeby__chip { display: none; }
+.mm-madeby__mark { fill: #f5c518; }
+.mm-madeby__cta { height: 9px; }
+.mm-madeby .mm-madeby__arrow { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s ease; }
+/* light version: the yellow mark sits on a charcoal chip, and the arrow on a yellow dot */
+.mm-madeby--light .mm-madeby__by { gap: 12px; }
+.mm-madeby--light .mm-madeby__chip { display: block; fill: #181818; }
+.mm-madeby--light .mm-madeby__arrow { box-sizing: content-box; padding: 4px; border-radius: 50%; background: #f5c518; }
+.mm-madeby__link:hover, .mm-madeby__link:focus-visible { background-size: 100% var(--mm-rule); }
+.mm-madeby__link:hover .mm-madeby__lead, .mm-madeby__link:focus-visible .mm-madeby__lead { color: var(--mm-ink); }
+.mm-madeby__link:hover .mm-madeby__arrow, .mm-madeby__link:focus-visible .mm-madeby__arrow { transform: translateX(4px); }
+.mm-madeby__link:focus-visible { outline: 2px solid var(--mm-focus); outline-offset: -5px; border-radius: 0; }
+@media (max-width: 480px) {
+  /* the credit and its call to action sit on two centred lines */
+  .mm-madeby__link { justify-content: center; padding-block: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mm-madeby__link, .mm-madeby__lead, .mm-madeby .mm-madeby__arrow { transition: none; }
+}
+@media print { .mm-madeby { display: none; } }
+
 .mobile-bar {
   position: fixed;
   z-index: 40;
